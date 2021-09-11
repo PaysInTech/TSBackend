@@ -8,7 +8,7 @@ import io.ktor.serialization.json
 import kotlinx.serialization.json.Json
 
 fun Application.configureSerialization() {
-  install(ContentNegotiation) {
-    json(json = Json { prettyPrint = true }, contentType = ContentType.Application.Json)
-  }
+    install(ContentNegotiation) {
+        json(json = Json { prettyPrint = true }, contentType = ContentType.Application.Json)
+    }
 }

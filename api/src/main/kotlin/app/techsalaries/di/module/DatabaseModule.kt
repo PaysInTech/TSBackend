@@ -4,10 +4,9 @@ import app.techsalaries.config.DatabaseConfig
 import app.techsalaries.db.DefaultDataSource
 import dagger.Module
 import dagger.Provides
-import io.ktor.config.ApplicationConfig
+import org.ktorm.database.Database
 import javax.inject.Singleton
 import javax.sql.DataSource
-import org.ktorm.database.Database
 
 @Module
 object DatabaseModule {

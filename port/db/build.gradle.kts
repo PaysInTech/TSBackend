@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     // Core Module
-    implementation(project (":core"))
+    implementation(project(":core"))
 
     // JavaX Inject
     api("javax.inject:javax.inject:$javax_inject_version")

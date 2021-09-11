@@ -1,11 +1,10 @@
 package app.techsalaries.plugins
 
-import io.ktor.auth.*
-import io.ktor.util.*
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.*
+import io.ktor.application.Application
+import io.ktor.auth.UserIdPrincipal
+import io.ktor.auth.authentication
+import io.ktor.auth.basic
+import io.ktor.auth.form
 
 fun Application.configureSecurity() {
 

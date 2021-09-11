@@ -2,7 +2,6 @@ package app.techsalaries.api.sample
 
 import app.techsalaries.api.sample.model.SampleResponse
 import app.techsalaries.core.sample.SampleService
-import app.techsalaries.core.sample.model.Sample
 import javax.inject.Inject
 import javax.inject.Singleton
 

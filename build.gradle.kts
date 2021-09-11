@@ -47,7 +47,7 @@ spotless {
         targetExclude("$buildDir/**/*.kt")
         targetExclude("bin/**/*.kt")
         ktlint()
-        licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
+//        licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
     }
     kotlinGradle {
         target("*.gradle.kts")
