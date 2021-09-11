@@ -1,33 +1,44 @@
-val ktor_version: String by project
 val kotlin_version: String by project
-val logback_version: String by project
+val kotest_version: String by project
+val mockk_version: String by project
+val coroutines_version: String by project
 
 plugins {
-    application
-    kotlin("jvm") version "1.5.20"
+    kotlin("jvm") version "1.5.30"
+    kotlin("plugin.serialization") version "1.5.30"
+    id("com.diffplug.spotless") version "5.15.0"
 }
 
-group = "app.techsalaries"
-version = "0.0.1"
-application {
-    mainClass.set("app.techsalaries.ApplicationKt")
-}
-
-repositories {
-    mavenCentral()
-}
+repositories { mavenCentral() }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core:$ktor_version")
-    implementation("io.ktor:ktor-locations:$ktor_version")
-    implementation("io.ktor:ktor-gson:$ktor_version")
-    implementation("io.ktor:ktor-server-host-common:$ktor_version")
-    implementation("io.ktor:ktor-auth:$ktor_version")
-    implementation("io.ktor:ktor-server-netty:$ktor_version")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
+    // Standard Library
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
 
-    //Test
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
+
+    // Testing
+    testImplementation("io.kotest:kotest-runner-junit5:$kotest_version")
+    testImplementation("io.kotest:kotest-assertions-core:$kotest_version")
+    testImplementation("io.kotest:kotest-property:$kotest_version")
+    testImplementation("io.mockk:mockk:$mockk_version")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
+spotless {
+    kotlin {
+        target("**/*.kt")
+        targetExclude("$buildDir/**/*.kt")
+        targetExclude("bin/**/*.kt")
+        ktlint()
+        licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
+    }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint()
+    }
 }
