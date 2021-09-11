@@ -1,14 +1,17 @@
 package app.techsalaries
 
-import io.ktor.server.engine.*
+import app.techsalaries.plugins.configureHTTP
+import app.techsalaries.plugins.configureRouting
+import app.techsalaries.plugins.configureSecurity
+import app.techsalaries.plugins.configureSerialization
+import io.ktor.application.*
 import io.ktor.server.netty.*
-import app.techsalaries.plugins.*
 
-fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-        configureRouting()
-        configureSerialization()
-        configureSecurity()
-        configureHTTP()
-    }.start(wait = true)
+fun main(args: Array<String>): Unit = EngineMain.main(args)
+
+fun Application.module() {
+    configureRouting()
+    configureSerialization()
+    configureSecurity()
+    configureHTTP()
 }

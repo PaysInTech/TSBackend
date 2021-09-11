@@ -1,17 +1,15 @@
 package app.techsalaries.plugins
 
-import io.ktor.auth.*
-import io.ktor.util.*
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.response.*
-import io.ktor.request.*
 import io.ktor.routing.*
 
 fun Application.configureSecurity() {
 
     authentication {
         basic(name = "myauth1") {
-            realm = "Ktor Server"
+            realm = environment.config.property("auth.realm").getString()
             validate { credentials ->
                 if (credentials.name == credentials.password) {
                     UserIdPrincipal(credentials.name)
@@ -22,8 +20,8 @@ fun Application.configureSecurity() {
         }
 
         form(name = "myauth2") {
-            userParamName = "user"
-            passwordParamName = "password"
+            userParamName = environment.config.property("auth.username").getString()
+            passwordParamName = environment.config.property("auth.password").getString()
             challenge {
                 /**/
             }
