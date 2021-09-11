@@ -10,7 +10,7 @@ import io.ktor.routing.Route
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Route.HealthApi() {
-    get<TechSalariesApiRoute.HealthCheck.CheckStatus> {
+    get<TechSalariesApiRoute.HealthCheck> {
         // TODO: Check resources here
         call.respond(HealthResponse.ok())
     }

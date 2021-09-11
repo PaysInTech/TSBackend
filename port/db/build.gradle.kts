@@ -1,5 +1,6 @@
 val javax_inject_version: String by project
 val postgres_version: String by project
+val ktorm_version: String by project
 val hikari_version: String by project
 
 plugins {
@@ -19,6 +20,9 @@ dependencies {
 
     // PostgreSQL
     api("org.postgresql:postgresql:$postgres_version")
+
+    // Ktorm
+    api("org.ktorm:ktorm-core:$ktorm_version")
 
     // Hikari
     api("com.zaxxer:HikariCP:$hikari_version")
