@@ -6,6 +6,7 @@ val coroutines_version: String by project
 plugins {
     kotlin("jvm") version "1.5.30"
     kotlin("plugin.serialization") version "1.5.30"
+    kotlin("kapt") version "1.5.30"
     id("com.diffplug.spotless") version "5.15.0"
 }
 
@@ -27,6 +28,11 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 spotless {
