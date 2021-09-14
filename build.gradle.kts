@@ -12,51 +12,58 @@ plugins {
 
 repositories { mavenCentral() }
 
-dependencies {
-    // Standard Library
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "com.diffplug.spotless")
 
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
+    repositories { mavenCentral() }
 
-    // Testing
-    testImplementation("io.kotest:kotest-runner-junit5:$kotest_version")
-    testImplementation("io.kotest:kotest-assertions-core:$kotest_version")
-    testImplementation("io.kotest:kotest-property:$kotest_version")
-    testImplementation("io.mockk:mockk:$mockk_version")
-}
+    dependencies {
+        // Standard Library
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
+        // Coroutines
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
-}
-
-tasks.compileKotlin {
-    kotlinOptions {
-        jvmTarget = "16"
+        // Testing
+        testImplementation("io.kotest:kotest-runner-junit5:$kotest_version")
+        testImplementation("io.kotest:kotest-assertions-core:$kotest_version")
+        testImplementation("io.kotest:kotest-property:$kotest_version")
+        testImplementation("io.mockk:mockk:$mockk_version")
     }
-}
 
-tasks.compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "16"
-    }
-}
-
-spotless {
-    kotlin {
-        target("**/*.kt")
-        targetExclude("$buildDir/**/*.kt")
-        targetExclude("bin/**/*.kt")
-        ktlint()
+    spotless {
+        kotlin {
+            target("**/*.kt")
+            targetExclude("$buildDir/**/*.kt")
+            targetExclude("bin/**/*.kt")
+            ktlint()
 //        licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
+        }
+        kotlinGradle {
+            target("*.gradle.kts")
+            ktlint()
+        }
     }
-    kotlinGradle {
-        target("*.gradle.kts")
-        ktlint()
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_14
+        targetCompatibility = JavaVersion.VERSION_14
+    }
+
+    tasks.compileKotlin {
+        kotlinOptions {
+            jvmTarget = "14"
+        }
+    }
+
+    tasks.compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "14"
+        }
     }
 }

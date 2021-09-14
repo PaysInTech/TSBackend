@@ -28,7 +28,6 @@ distributions {
     }
 }
 
-
 tasks.named<JavaExec>("run") {
 
     val databaseHost = System.getenv("DATABASE_HOST") ?: "localhost"
