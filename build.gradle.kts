@@ -35,7 +35,13 @@ java {
     targetCompatibility = JavaVersion.VERSION_16
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+tasks.compileKotlin {
+    kotlinOptions {
+        jvmTarget = "16"
+    }
+}
+
+tasks.compileTestKotlin {
     kotlinOptions {
         jvmTarget = "16"
     }
