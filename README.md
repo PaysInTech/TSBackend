@@ -29,6 +29,10 @@ This project follows Hexagonal Architecture. It is a multi-module gradle project
 
 ## Development Setup 🖥
 
+### With Docker
+1. Build project: `./gradlew installDist`
+2. Run docker compose: `docker-compose up backend -d`
+
 ### 🗄️ Database Setup
 
 - Download and install the latest [PostgreSQL package](https://www.postgresql.org/download/) as per your system need.
