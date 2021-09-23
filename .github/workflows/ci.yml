@@ -1,0 +1,55 @@
+name: CI
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 14
+
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+
+      - name: Build with Gradle 🛠️
+        run: ./gradlew build --stacktrace
+
+#  deploy:
+#    name: Deploy
+#    if: github.ref == 'refs/heads/main'
+#    needs: build
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v1
+#
+#      - name: Install Heroku CLI
+#        run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+#
+#      - name: Configure Heroku
+#        run: |
+#          git config --global user.name ${{ secrets.HEROKU_GIT_ACTOR }}
+#          git config --global user.email ${{ secrets.HEROKU_USER_EMAIL }}
+#          echo "$HEROKU_AUTH" > ~/.netrc
+#          heroku git:remote --app ${{ secrets.HEROKU_APP_NAME }}
+#        env:
+#          HEROKU_AUTH: ${{ secrets.HEROKU_AUTH }}
+#
+#      - name: Deploy to Heroku
+#        run: git push heroku HEAD:main --force

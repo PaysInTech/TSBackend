@@ -21,6 +21,9 @@
 *.ipr
 *.iws
 
+/**/out
+/**/build
+
 # AWS User-specific
 .idea/**/aws.xml
 
