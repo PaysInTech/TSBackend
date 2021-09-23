@@ -6,7 +6,7 @@ val coroutines_version: String by project
 plugins {
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.serialization") version "1.5.30"
-    kotlin("kapt") version "1.5.30"
+    kotlin("kapt") version "1.5.31"
     id("com.diffplug.spotless") version "5.15.1"
 }
 
