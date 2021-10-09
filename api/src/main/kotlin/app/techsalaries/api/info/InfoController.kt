@@ -10,6 +10,9 @@ import app.techsalaries.exception.ServerError
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Controller for [InfoApi].
+ */
 @Singleton
 class InfoController @Inject constructor(private val service: JobInfoService) {
     suspend fun getAllJobProfiles(): HttpResponse<JobProfilesResponse> = try {

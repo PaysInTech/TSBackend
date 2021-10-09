@@ -1,10 +1,10 @@
 package app.techsalaries.api.info.model
 
+import app.techsalaries.api.response.BaseResponse
+import kotlinx.serialization.Serializable
 import app.techsalaries.core.jobInfo.model.JobProfile as CoreJobProfile
 import app.techsalaries.core.jobInfo.model.ProgrammingLanguage as CoreProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology as CoreTechnology
-import app.techsalaries.api.response.BaseResponse
-import kotlinx.serialization.Serializable
 
 @Serializable
 data class JobProfilesResponse(val profiles: List<JobProfile>) : BaseResponse(isSuccess = true) {
