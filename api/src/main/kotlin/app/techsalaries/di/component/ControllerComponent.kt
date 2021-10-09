@@ -1,6 +1,6 @@
 package app.techsalaries.di.component
 
-import app.techsalaries.api.sample.SampleController
+import app.techsalaries.api.info.InfoController
 import dagger.Lazy
 import dagger.Subcomponent
 import javax.inject.Singleton
@@ -9,5 +9,5 @@ import javax.inject.Singleton
 interface ControllerComponent {
 
     @Singleton
-    fun sampleController(): Lazy<SampleController>
+    fun infoController(): Lazy<InfoController>
 }
