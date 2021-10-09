@@ -6,3 +6,6 @@ GET http://localhost:8080/api/v1/info/technologies
 
 ### Programming languages
 GET http://localhost:8080/api/v1/info/programming-languages
+
+### Contribution levels
+GET http://localhost:8080/api/v1/info/contribution-levels

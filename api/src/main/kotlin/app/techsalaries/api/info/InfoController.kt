@@ -1,5 +1,6 @@
 package app.techsalaries.api.info
 
+import app.techsalaries.api.info.model.ContributionLevelsResponse
 import app.techsalaries.api.info.model.JobProfilesResponse
 import app.techsalaries.api.info.model.ProgrammingLanguagesResponse
 import app.techsalaries.api.info.model.TechnologiesResponse
@@ -32,10 +33,15 @@ class InfoController @Inject constructor(private val service: JobInfoService) {
     suspend fun getAllProgrammingLanguages(): HttpResponse<ProgrammingLanguagesResponse> = try {
         val languages = service.getAllProgrammingLanguages()
         Success.ok(
-            ProgrammingLanguagesResponse(
-                programmingLanguages = languages.map { ProgrammingLanguagesResponse.ProgrammingLanguage.from(it) }
-            )
+            ProgrammingLanguagesResponse(languages.map { ProgrammingLanguagesResponse.ProgrammingLanguage.from(it) })
         )
+    } catch (e: Exception) {
+        throw ServerError("Something went wrong")
+    }
+
+    suspend fun getAllContributionLevels(): HttpResponse<ContributionLevelsResponse> = try {
+        val levels = service.getAllContributionLevels()
+        Success.ok(ContributionLevelsResponse(levels.map { ContributionLevelsResponse.ContributionLevel.from(it) }))
     } catch (e: Exception) {
         throw ServerError("Something went wrong")
     }

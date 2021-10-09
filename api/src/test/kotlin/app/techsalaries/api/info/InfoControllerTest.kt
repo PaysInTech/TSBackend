@@ -1,10 +1,12 @@
 package app.techsalaries.api.info
 
+import app.techsalaries.api.info.model.ContributionLevelsResponse
 import app.techsalaries.api.info.model.JobProfilesResponse
 import app.techsalaries.api.info.model.ProgrammingLanguagesResponse
 import app.techsalaries.api.info.model.TechnologiesResponse
 import app.techsalaries.api.response.Success
 import app.techsalaries.core.jobInfo.JobInfoService
+import app.techsalaries.core.jobInfo.model.ContributionLevel
 import app.techsalaries.core.jobInfo.model.JobProfile
 import app.techsalaries.core.jobInfo.model.ProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology
@@ -28,6 +30,7 @@ class InfoControllerTest : BehaviorSpec({
         val profiles = listOf(JobProfile(1, "Android Developer"), JobProfile(2, "iOS Developer"))
         val technologies = listOf(Technology(1, "Android"), Technology(2, "Flutter"))
         val programmingLanguages = listOf(ProgrammingLanguage(1, "Kotlin"), ProgrammingLanguage(2, "Java"))
+        val levels = listOf(ContributionLevel(1, "Manager"), ContributionLevel(2, "Lead"))
 
         When("The profiles are retrieved") {
             And("Info retrieved successfully") {
@@ -130,6 +133,41 @@ class InfoControllerTest : BehaviorSpec({
 
                 Then("Error response should be returned") {
                     shouldThrow<ServerError> { controller.getAllProgrammingLanguages() }
+                }
+            }
+        }
+
+        When("The contribution levels are retrieved") {
+            And("Info retrieved successfully") {
+                coEvery { service.getAllContributionLevels() } returns levels
+
+                val response = controller.getAllContributionLevels()
+
+                Then("Controller should request service") {
+                    coVerify(exactly = 1) { service.getAllContributionLevels() }
+                }
+
+                Then("Success response should be returned") {
+                    response.statusCode shouldBe HttpStatusCode.OK
+                    response should beInstanceOf<Success<ContributionLevelsResponse>>()
+                }
+
+                Then("Valid data should be returned") {
+                    val data = (response as Success<ContributionLevelsResponse>).data
+
+                    data.isSuccess shouldBe true
+                    data.levels shouldContainExactly listOf(
+                        ContributionLevelsResponse.ContributionLevel(1, "Manager"),
+                        ContributionLevelsResponse.ContributionLevel(2, "Lead")
+                    )
+                }
+            }
+
+            And("Info NOT retrieved successfully") {
+                coEvery { service.getAllContributionLevels() } throws Exception("")
+
+                Then("Error response should be returned") {
+                    shouldThrow<ServerError> { controller.getAllContributionLevels() }
                 }
             }
         }

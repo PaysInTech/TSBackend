@@ -22,6 +22,9 @@ class TechSalariesApiRoute {
 
         @Location("job-profiles")
         class JobProfiles()
+
+        @Location("contribution-levels")
+        class ContributionLevels()
     }
 }
 

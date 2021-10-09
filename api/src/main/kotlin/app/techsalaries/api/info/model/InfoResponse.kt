@@ -2,6 +2,7 @@ package app.techsalaries.api.info.model
 
 import app.techsalaries.api.response.BaseResponse
 import kotlinx.serialization.Serializable
+import app.techsalaries.core.jobInfo.model.ContributionLevel as CoreContributionLevel
 import app.techsalaries.core.jobInfo.model.JobProfile as CoreJobProfile
 import app.techsalaries.core.jobInfo.model.ProgrammingLanguage as CoreProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology as CoreTechnology
@@ -37,6 +38,17 @@ data class ProgrammingLanguagesResponse(
     data class ProgrammingLanguage(val id: Long, val name: String) {
         companion object {
             fun from(language: CoreProgrammingLanguage) = ProgrammingLanguage(language.id, language.name)
+        }
+    }
+}
+
+@Serializable
+data class ContributionLevelsResponse(val levels: List<ContributionLevel>) : BaseResponse(isSuccess = true) {
+
+    @Serializable
+    data class ContributionLevel(val id: Long, val level: String) {
+        companion object {
+            fun from(level: CoreContributionLevel) = ContributionLevel(level.id, level.name)
         }
     }
 }

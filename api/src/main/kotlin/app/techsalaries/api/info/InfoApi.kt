@@ -23,4 +23,8 @@ fun Route.InfoApi() {
     get<TechSalariesApiRoute.Info.ProgrammingLanguages> {
         returnResponse(controller.get().getAllProgrammingLanguages())
     }
+
+    get<TechSalariesApiRoute.Info.ContributionLevels> {
+        returnResponse(controller.get().getAllContributionLevels())
+    }
 }
