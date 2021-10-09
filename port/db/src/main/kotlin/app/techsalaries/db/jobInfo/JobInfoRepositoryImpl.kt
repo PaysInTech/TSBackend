@@ -2,9 +2,12 @@ package app.techsalaries.db.jobInfo
 
 import app.techsalaries.core.IoDispatcher
 import app.techsalaries.core.jobInfo.JobInfoRepository
+import app.techsalaries.core.jobInfo.model.ContributionLevel
 import app.techsalaries.core.jobInfo.model.JobProfile
 import app.techsalaries.core.jobInfo.model.ProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import org.ktorm.database.Database
@@ -13,8 +16,6 @@ import org.ktorm.dsl.from
 import org.ktorm.dsl.map
 import org.ktorm.dsl.select
 import org.ktorm.dsl.where
-import javax.inject.Inject
-import javax.inject.Singleton
 
 @Singleton
 class JobInfoRepositoryImpl @Inject constructor(
@@ -44,5 +45,13 @@ class JobInfoRepositoryImpl @Inject constructor(
             .select()
             .where { Technologies.enabled eq true }
             .map { Technology(it[Technologies.id]!!, it[Technologies.name]!!) }
+    }
+
+    override suspend fun getAllContributionLevels(): List<ContributionLevel> = withContext(dispatcher) {
+        database
+            .from(ContributionLevels)
+            .select()
+            .where { ContributionLevels.enabled eq true }
+            .map { ContributionLevel(it[ContributionLevels.id]!!, it[ContributionLevels.name]!!) }
     }
 }
