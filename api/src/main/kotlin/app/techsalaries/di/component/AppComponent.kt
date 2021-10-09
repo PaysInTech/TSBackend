@@ -15,7 +15,8 @@ import javax.inject.Singleton
         AppModule::class,
         DatabaseModule::class,
         RepositoryModule::class,
-        CoroutinesDispatchersModule::class]
+        CoroutinesDispatchersModule::class
+    ]
 )
 interface AppComponent {
     fun app(): Application

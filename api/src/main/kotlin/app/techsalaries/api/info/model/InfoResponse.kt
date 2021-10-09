@@ -1,10 +1,10 @@
 package app.techsalaries.api.info.model
 
 import app.techsalaries.api.response.BaseResponse
-import app.techsalaries.core.jobInfo.model.JobProfile as CoreJobProfile
-import app.techsalaries.core.jobInfo.model.Technology as CoreTechnology
-import app.techsalaries.core.jobInfo.model.ProgrammingLanguage as CoreProgrammingLanguage
 import kotlinx.serialization.Serializable
+import app.techsalaries.core.jobInfo.model.JobProfile as CoreJobProfile
+import app.techsalaries.core.jobInfo.model.ProgrammingLanguage as CoreProgrammingLanguage
+import app.techsalaries.core.jobInfo.model.Technology as CoreTechnology
 
 @Serializable
 class JobProfilesResponse(

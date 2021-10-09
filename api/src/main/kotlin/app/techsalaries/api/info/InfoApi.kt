@@ -5,9 +5,7 @@ package app.techsalaries.api.info
 import app.techsalaries.api.TechSalariesApiRoute
 import app.techsalaries.plugins.controllers
 import app.techsalaries.utils.returnResponse
-import io.ktor.application.call
 import io.ktor.locations.get
-import io.ktor.response.respond
 import io.ktor.routing.Route
 
 fun Route.InfoApi() {

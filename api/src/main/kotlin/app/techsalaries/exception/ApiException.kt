@@ -10,7 +10,6 @@ sealed class UnsatisfiedRequestException(
     val response get() = Unsuccessful(this, statusCode)
 }
 
-
 open class BadRequestException(override val message: String) : UnsatisfiedRequestException(message, HttpStatusCode.BadRequest)
 
 open class NotFoundException(override val message: String) : UnsatisfiedRequestException(message, HttpStatusCode.NotFound)
