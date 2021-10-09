@@ -13,6 +13,7 @@ class JobInfoServiceTest : BehaviorSpec({
         coEvery { repository.getAllJobProfiles() } returns emptyList()
         coEvery { repository.getAllTechnologies() } returns emptyList()
         coEvery { repository.getAllProgrammingLanguages() } returns emptyList()
+        coEvery { repository.getAllContributionLevels() } returns emptyList()
 
         When("The profiles info is requested") {
 
@@ -38,6 +39,15 @@ class JobInfoServiceTest : BehaviorSpec({
 
             Then("Service should request repository for data") {
                 coVerify(exactly = 1) { repository.getAllProgrammingLanguages() }
+            }
+        }
+
+        When("The contribution level info is requested") {
+
+            service.getAllContributionLevels()
+
+            Then("Service should request repository for data") {
+                coVerify(exactly = 1) { repository.getAllContributionLevels() }
             }
         }
     }

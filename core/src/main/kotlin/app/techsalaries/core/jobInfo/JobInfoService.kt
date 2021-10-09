@@ -10,4 +10,6 @@ class JobInfoService @Inject constructor(private val repository: JobInfoReposito
     suspend fun getAllTechnologies() = repository.getAllTechnologies()
 
     suspend fun getAllProgrammingLanguages() = repository.getAllProgrammingLanguages()
+
+    suspend fun getAllContributionLevels() = repository.getAllContributionLevels()
 }
