@@ -17,6 +17,12 @@ object Technologies : Table<Nothing>("technologies") {
     val enabled = boolean("enabled")
 }
 
+object ContributionLevels : Table<Nothing>("contribution_levels") {
+    val id = long("id").primaryKey()
+    val name = varchar("name")
+    val enabled = boolean("enabled")
+}
+
 object JobProfiles : Table<Nothing>("job_profiles") {
     val id = long("id").primaryKey()
     val name = varchar("name")
