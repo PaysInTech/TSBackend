@@ -1,16 +1,13 @@
 package app.techsalaries.api.info.model
 
-import app.techsalaries.api.response.BaseResponse
-import kotlinx.serialization.Serializable
 import app.techsalaries.core.jobInfo.model.JobProfile as CoreJobProfile
 import app.techsalaries.core.jobInfo.model.ProgrammingLanguage as CoreProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology as CoreTechnology
+import app.techsalaries.api.response.BaseResponse
+import kotlinx.serialization.Serializable
 
 @Serializable
-class JobProfilesResponse(
-    override val isSuccess: Boolean = true,
-    val profiles: List<JobProfile>
-) : BaseResponse {
+data class JobProfilesResponse(val profiles: List<JobProfile>) : BaseResponse(isSuccess = true) {
 
     @Serializable
     data class JobProfile(val id: Long, val profileName: String) {
@@ -21,10 +18,7 @@ class JobProfilesResponse(
 }
 
 @Serializable
-class TechnologiesResponse(
-    override val isSuccess: Boolean = true,
-    val technologies: List<Technology>
-) : BaseResponse {
+data class TechnologiesResponse(val technologies: List<Technology>) : BaseResponse(isSuccess = true) {
 
     @Serializable
     data class Technology(val id: Long, val name: String) {
@@ -35,10 +29,9 @@ class TechnologiesResponse(
 }
 
 @Serializable
-class ProgrammingLanguagesResponse(
-    override val isSuccess: Boolean = true,
+data class ProgrammingLanguagesResponse(
     val programmingLanguages: List<ProgrammingLanguage>
-) : BaseResponse {
+) : BaseResponse(isSuccess = true) {
 
     @Serializable
     data class ProgrammingLanguage(val id: Long, val name: String) {

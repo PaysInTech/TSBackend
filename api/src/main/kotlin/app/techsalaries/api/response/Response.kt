@@ -2,14 +2,14 @@ package app.techsalaries.api.response
 
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 sealed interface Response<T : BaseResponse> {
     val statusCode: HttpStatusCode
 }
 
-interface BaseResponse {
-    val isSuccess: Boolean
-}
+@Serializable
+abstract class BaseResponse(val isSuccess: Boolean)
 
 class Success<T : BaseResponse>(
     val data: @Serializable T,
@@ -28,4 +28,4 @@ class Unsuccessful(e: Throwable, override val statusCode: HttpStatusCode) : Resp
 
 @Suppress("unused")
 @Serializable
-class UnsuccessfulResponse(override val isSuccess: Boolean = false, val message: String) : BaseResponse
+class UnsuccessfulResponse(val message: String) : BaseResponse(isSuccess = false)
