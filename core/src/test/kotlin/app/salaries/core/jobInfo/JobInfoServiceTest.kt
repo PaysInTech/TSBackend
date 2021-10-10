@@ -1,5 +1,7 @@
-package app.techsalaries.core.jobInfo
+package app.salaries.core.jobInfo
 
+import app.techsalaries.core.jobInfo.JobInfoRepository
+import app.techsalaries.core.jobInfo.JobInfoService
 import io.kotest.core.spec.style.BehaviorSpec
 import io.mockk.coEvery
 import io.mockk.coVerify
