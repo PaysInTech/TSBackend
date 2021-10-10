@@ -1,13 +1,13 @@
 package app.techsalaries.db
 
-import java.nio.file.Paths
-import java.sql.DriverManager
 import liquibase.Liquibase
 import liquibase.database.jvm.JdbcConnection
 import liquibase.resource.FileSystemResourceAccessor
 import org.junit.ClassRule
 import org.postgresql.ds.PGSimpleDataSource
 import org.testcontainers.containers.PostgreSQLContainer
+import java.nio.file.Paths
+import java.sql.DriverManager
 
 class TechSalariesPSQLContainer : PostgreSQLContainer<TechSalariesPSQLContainer>("postgres")
 

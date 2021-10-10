@@ -2,17 +2,17 @@ package app.techsalaries.di.module
 
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
-import javax.sql.DataSource
-import org.ktorm.database.Database
-import java.nio.file.Paths
-import java.sql.DriverManager
 import liquibase.Liquibase
 import liquibase.database.jvm.JdbcConnection
 import liquibase.resource.FileSystemResourceAccessor
 import org.junit.ClassRule
+import org.ktorm.database.Database
 import org.postgresql.ds.PGSimpleDataSource
 import org.testcontainers.containers.PostgreSQLContainer
+import java.nio.file.Paths
+import java.sql.DriverManager
+import javax.inject.Singleton
+import javax.sql.DataSource
 
 @Module
 object TestDatabaseModule {
