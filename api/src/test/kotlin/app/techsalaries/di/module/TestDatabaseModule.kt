@@ -43,9 +43,5 @@ class TestDataSource : PGSimpleDataSource() {
         setURL(sqlContainer.jdbcUrl)
         user = sqlContainer.username
         password = sqlContainer.password
-
-        dataSource = this
     }
 }
-
-lateinit var dataSource: DataSource
