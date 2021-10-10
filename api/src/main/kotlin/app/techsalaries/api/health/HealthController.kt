@@ -18,8 +18,7 @@ import javax.sql.DataSource
 class HealthController @Inject constructor(private val dataSource: DataSource) {
     fun checkHealth(): HttpResponse<out BaseResponse> {
         // Because at this moment we are in an API call, so we don't need to validate API call.
-        // We should directly check dependents' health
-
+        // We should directly check the health of dependencies
         val isDatabaseWorking = isDatabaseWorking()
 
         return if (!isDatabaseWorking) {
