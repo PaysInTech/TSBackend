@@ -10,21 +10,21 @@ import io.ktor.routing.Route
 
 fun Route.InfoApi() {
 
-    val controller = controllers.infoController()
+    val controller by lazy { controllers.infoController() }
 
     get<TechSalariesApiRoute.Info.JobProfiles> {
-        returnResponse(controller.get().getAllJobProfiles())
+        returnResponse(controller.getAllJobProfiles())
     }
 
     get<TechSalariesApiRoute.Info.Technologies> {
-        returnResponse(controller.get().getAllTechnologies())
+        returnResponse(controller.getAllTechnologies())
     }
 
     get<TechSalariesApiRoute.Info.ProgrammingLanguages> {
-        returnResponse(controller.get().getAllProgrammingLanguages())
+        returnResponse(controller.getAllProgrammingLanguages())
     }
 
     get<TechSalariesApiRoute.Info.ContributionLevels> {
-        returnResponse(controller.get().getAllContributionLevels())
+        returnResponse(controller.getAllContributionLevels())
     }
 }
