@@ -5,6 +5,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val dagger_version: String by project
 val logback_version: String by project
+val ktor_kotest_version: String by project
 
 plugins {
     application
@@ -46,6 +47,7 @@ dependencies {
 
     // Test
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+    testImplementation("io.kotest.extensions:kotest-assertions-ktor:$kotest_ktor_version")
 }
 
 tasks.named<JavaExec>("run") {
