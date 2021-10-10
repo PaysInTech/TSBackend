@@ -28,6 +28,9 @@ class Success<T : BaseResponse>(
  * HTTP response model for error/failure codes (4XX, 5XX)
  */
 class Unsuccessful(e: Throwable, override val statusCode: HttpStatusCode) : HttpResponse<UnsuccessfulResponse> {
+
+    constructor(message: String?, statusCode: HttpStatusCode) : this(Exception(message), statusCode)
+
     val message = UnsuccessfulResponse(message = e.message.toString())
 }
 
