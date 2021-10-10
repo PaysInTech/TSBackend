@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.serialization") version "1.5.31"
     kotlin("kapt") version "1.5.31"
     id("com.diffplug.spotless") version "5.15.1"
+    jacoco
 }
 
 repositories { mavenCentral() }
@@ -15,8 +16,13 @@ repositories { mavenCentral() }
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "com.diffplug.spotless")
+    apply(plugin = "jacoco")
 
     repositories { mavenCentral() }
+
+    jacoco {
+        toolVersion = "0.8.7"
+    }
 
     dependencies {
         // Standard Library
@@ -64,6 +70,19 @@ subprojects {
     tasks.compileTestKotlin {
         kotlinOptions {
             jvmTarget = "14"
+        }
+    }
+
+    tasks.test {
+        finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+    }
+    tasks.jacocoTestReport {
+        dependsOn(tasks.test) // tests are required to run before generating the report
+
+        reports {
+            xml.required.set(false)
+            csv.required.set(false)
+            html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
         }
     }
 }
