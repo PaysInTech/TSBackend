@@ -8,8 +8,7 @@ import io.ktor.routing.Route
 import io.ktor.routing.application
 import io.ktor.util.AttributeKey
 
-fun Application.configureDI() {
-    val appComponent = DaggerAppComponent.builder().withApplication(this).build()
+fun Application.configureDI(appComponent: AppComponent = DaggerAppComponent.builder().withApplication(this).build()) {
     setAppComponent(appComponent)
     setControllerComponent(appComponent.controllerComponent())
 }
