@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.serialization") version "1.5.31"
     kotlin("kapt") version "1.5.31"
-    id("com.diffplug.spotless") version "5.15.1"
+    id("com.diffplug.spotless") version "6.0.0"
 }
 
 repositories { mavenCentral() }
