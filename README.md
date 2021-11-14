@@ -31,7 +31,9 @@ This project follows Hexagonal Architecture. It is a multi-module gradle project
 
 ### With Docker
 1. Build project: `./gradlew installDist`
-2. Run docker compose: `docker-compose up backend -d`
+2. Run docker compose: `docker-compose up -d`
+
+Docker setup includes API, DB and DB migrations. The url to access the API - http://localhost:8080/api -  for example [HealthAPI](http://localhost:8080/api/health)
 
 ### 🗄️ Database Setup
 
