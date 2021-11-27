@@ -6,6 +6,10 @@ import app.techsalaries.core.jobInfo.model.ContributionLevel
 import app.techsalaries.core.jobInfo.model.JobProfile
 import app.techsalaries.core.jobInfo.model.ProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology
+import app.techsalaries.db.schema.ContributionLevels
+import app.techsalaries.db.schema.JobProfiles
+import app.techsalaries.db.schema.ProgrammingLanguages
+import app.techsalaries.db.schema.Technologies
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import org.ktorm.database.Database
@@ -28,7 +32,8 @@ class JobInfoRepositoryImpl @Inject constructor(
             .from(JobProfiles)
             .select()
             .where { JobProfiles.enabled eq true }
-            .map { JobProfile(it[JobProfiles.id]!!, it[JobProfiles.name]!!) }
+            .map { JobProfiles.createEntity(it) }
+            .map { JobProfile(it.id, it.name) }
     }
 
     override suspend fun getAllProgrammingLanguages(): List<ProgrammingLanguage> = withContext(dispatcher) {
@@ -36,7 +41,8 @@ class JobInfoRepositoryImpl @Inject constructor(
             .from(ProgrammingLanguages)
             .select()
             .where { ProgrammingLanguages.enabled eq true }
-            .map { ProgrammingLanguage(it[ProgrammingLanguages.id]!!, it[ProgrammingLanguages.name]!!) }
+            .map { ProgrammingLanguages.createEntity(it) }
+            .map { ProgrammingLanguage(it.id, it.name) }
     }
 
     override suspend fun getAllTechnologies(): List<Technology> = withContext(dispatcher) {
@@ -44,7 +50,8 @@ class JobInfoRepositoryImpl @Inject constructor(
             .from(Technologies)
             .select()
             .where { Technologies.enabled eq true }
-            .map { Technology(it[Technologies.id]!!, it[Technologies.name]!!) }
+            .map { Technologies.createEntity(it) }
+            .map { Technology(it.id, it.name) }
     }
 
     override suspend fun getAllContributionLevels(): List<ContributionLevel> = withContext(dispatcher) {
@@ -52,6 +59,7 @@ class JobInfoRepositoryImpl @Inject constructor(
             .from(ContributionLevels)
             .select()
             .where { ContributionLevels.enabled eq true }
-            .map { ContributionLevel(it[ContributionLevels.id]!!, it[ContributionLevels.name]!!) }
+            .map { ContributionLevels.createEntity(it) }
+            .map { ContributionLevel(it.id, it.name) }
     }
 }

@@ -2,6 +2,7 @@ package app.techsalaries.di.component
 
 import app.techsalaries.api.health.HealthController
 import app.techsalaries.api.info.InfoController
+import app.techsalaries.api.salary.SalaryController
 import dagger.Subcomponent
 import javax.inject.Singleton
 
@@ -13,4 +14,7 @@ interface ControllerComponent {
 
     @Singleton
     fun healthController(): HealthController
+
+    @Singleton
+    fun salaryController(): SalaryController
 }
