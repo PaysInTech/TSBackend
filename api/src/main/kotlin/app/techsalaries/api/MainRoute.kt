@@ -4,31 +4,36 @@ package app.techsalaries.api
 
 import app.techsalaries.api.health.HealthApi
 import app.techsalaries.api.info.InfoApi
+import app.techsalaries.api.salary.SalaryApi
 import io.ktor.locations.Location
 import io.ktor.routing.Routing
 
 @Location("/api/v1")
-class TechSalariesApiRoute {
+object TechSalariesApiRoute {
     @Location("/health")
-    class HealthCheck
+    object HealthCheck
 
     @Location("/info")
-    class Info {
+    object Info {
         @Location("programming-languages")
-        class ProgrammingLanguages()
+        object ProgrammingLanguages
 
         @Location("technologies")
-        class Technologies()
+        object Technologies
 
         @Location("job-profiles")
-        class JobProfiles()
+        object JobProfiles
 
         @Location("contribution-levels")
-        class ContributionLevels()
+        object ContributionLevels
     }
+
+    @Location("salaries")
+    object Salaries
 }
 
 fun Routing.MainRoute() {
     HealthApi()
     InfoApi()
+    SalaryApi()
 }
