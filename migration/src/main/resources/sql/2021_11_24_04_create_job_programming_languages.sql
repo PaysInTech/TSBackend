@@ -11,5 +11,7 @@ CREATE TABLE job_programming_languages
 
     CONSTRAINT company_programming_languages_programming_languages_fk
         FOREIGN KEY (programming_language_id)
-            REFERENCES programming_languages (id)
+            REFERENCES programming_languages (id),
+
+    CONSTRAINT job_programming_languages_uk UNIQUE (job_detail_id, programming_language_id)
 )

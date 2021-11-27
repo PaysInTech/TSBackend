@@ -8,5 +8,7 @@ CREATE TABLE job_benefits
 
     CONSTRAINT job_benefits_job_details_fk
         FOREIGN KEY (job_detail_id)
-            REFERENCES job_details (id)
+            REFERENCES job_details (id),
+
+    CONSTRAINT job_benefits_uk UNIQUE (job_detail_id, type, amount)
 )

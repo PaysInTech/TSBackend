@@ -11,6 +11,8 @@ CREATE TABLE job_technologies
 
     CONSTRAINT company_technologies_technologies_fk
         FOREIGN KEY (technology_id)
-            REFERENCES technologies (id)
+            REFERENCES technologies (id),
+
+    CONSTRAINT job_technologies_uk UNIQUE (job_detail_id, technology_id)
 );
 
