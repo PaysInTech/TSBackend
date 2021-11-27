@@ -8,6 +8,7 @@ import app.techsalaries.api.response.HttpResponse
 import app.techsalaries.api.response.Success
 import app.techsalaries.core.jobInfo.JobInfoService
 import app.techsalaries.exception.ServerError
+import app.techsalaries.utils.handleResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,33 +17,25 @@ import javax.inject.Singleton
  */
 @Singleton
 class InfoController @Inject constructor(private val service: JobInfoService) {
-    suspend fun getAllJobProfiles(): HttpResponse<JobProfilesResponse> = try {
+    suspend fun getAllJobProfiles(): HttpResponse<JobProfilesResponse> = handleResponse {
         val profiles = service.getAllJobProfiles()
         Success.ok(JobProfilesResponse(profiles = profiles.map { JobProfilesResponse.JobProfile.from(it) }))
-    } catch (e: Exception) {
-        throw ServerError("Something went wrong")
     }
 
-    suspend fun getAllTechnologies(): HttpResponse<TechnologiesResponse> = try {
+    suspend fun getAllTechnologies(): HttpResponse<TechnologiesResponse> = handleResponse {
         val technologies = service.getAllTechnologies()
         Success.ok(TechnologiesResponse(technologies = technologies.map { TechnologiesResponse.Technology.from(it) }))
-    } catch (e: Exception) {
-        throw ServerError("Something went wrong")
     }
 
-    suspend fun getAllProgrammingLanguages(): HttpResponse<ProgrammingLanguagesResponse> = try {
+    suspend fun getAllProgrammingLanguages(): HttpResponse<ProgrammingLanguagesResponse> = handleResponse {
         val languages = service.getAllProgrammingLanguages()
         Success.ok(
             ProgrammingLanguagesResponse(languages.map { ProgrammingLanguagesResponse.ProgrammingLanguage.from(it) })
         )
-    } catch (e: Exception) {
-        throw ServerError("Something went wrong")
     }
 
-    suspend fun getAllContributionLevels(): HttpResponse<ContributionLevelsResponse> = try {
+    suspend fun getAllContributionLevels(): HttpResponse<ContributionLevelsResponse> = handleResponse {
         val levels = service.getAllContributionLevels()
         Success.ok(ContributionLevelsResponse(levels.map { ContributionLevelsResponse.ContributionLevel.from(it) }))
-    } catch (e: Exception) {
-        throw ServerError("Something went wrong")
     }
 }
