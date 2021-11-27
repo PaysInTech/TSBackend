@@ -1,5 +1,6 @@
 package app.techsalaries
 
+import app.techsalaries.firebase.FirebaseInitializer
 import app.techsalaries.plugins.configureDI
 import app.techsalaries.plugins.configureHTTP
 import app.techsalaries.plugins.configureRouting
@@ -13,6 +14,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 @JvmOverloads
 fun Application.main(testing: Boolean = true) {
+    FirebaseInitializer()
     configureDI()
     configureRouting()
     configureStatusPages()

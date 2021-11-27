@@ -9,6 +9,7 @@ val kotest_ktor_version: String by project
 val kotest_testcontainers_version: String by project
 val testcontainers_version: String by project
 val liquibase_version: String by project
+val firebase_adminsdk_version: String by project
 
 plugins {
     application
@@ -43,6 +44,7 @@ dependencies {
     implementation("io.ktor:ktor-auth:$ktor_version")
     implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("com.google.firebase:firebase-admin:$firebase_adminsdk_version")
 
     // Dagger
     implementation("com.google.dagger:dagger:$dagger_version")

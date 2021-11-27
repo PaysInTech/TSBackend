@@ -25,6 +25,7 @@ dependencies {
 
     // Ktorm
     api("org.ktorm:ktorm-core:$ktorm_version")
+    api("org.ktorm:ktorm-support-postgresql:$ktorm_version")
 
     // Hikari
     api("com.zaxxer:HikariCP:$hikari_version")
