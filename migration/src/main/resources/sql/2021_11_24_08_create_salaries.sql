@@ -3,7 +3,7 @@ CREATE TABLE salaries
     id               BIGSERIAL PRIMARY KEY,
     job_detail_id    BIGINT,
     coins            INT         NOT NULL,
-    user_id          BIGINT      REFERENCES users (id) ON DELETE SET NULL,
+    user_id          VARCHAR     REFERENCES users (id) ON DELETE SET NULL,
     metadata         JSONB,
     metadata_version INT,
     created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
