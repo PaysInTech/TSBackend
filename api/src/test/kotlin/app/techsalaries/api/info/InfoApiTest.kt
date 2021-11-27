@@ -8,8 +8,8 @@ import app.techsalaries.api.info.model.ProgrammingLanguagesResponse
 import app.techsalaries.api.info.model.ProgrammingLanguagesResponse.ProgrammingLanguage
 import app.techsalaries.api.info.model.TechnologiesResponse
 import app.techsalaries.api.info.model.TechnologiesResponse.Technology
+import app.techsalaries.core.utils.fromJson
 import app.techsalaries.utils.TestHttpUtils
-import app.techsalaries.utils.fromJson
 import io.kotest.assertions.ktor.shouldHaveStatus
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.collections.shouldContainExactly
