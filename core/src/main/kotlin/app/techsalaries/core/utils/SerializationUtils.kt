@@ -1,4 +1,4 @@
-package app.techsalaries.utils
+package app.techsalaries.core.utils
 
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -7,8 +7,7 @@ import kotlinx.serialization.json.Json
 /**
  * Converts any model to String JSON representation
  */
-val Any.json: String
-    get() = Json.encodeToString(this)
+inline fun <reified T> T.json(): String = Json.encodeToString(this)
 
 /**
  * Converts any String JSON to [T] model
