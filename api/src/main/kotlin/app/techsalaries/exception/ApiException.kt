@@ -20,3 +20,4 @@ open class AuthorizationException(override val message: String) : UnsatisfiedReq
 open class ServerError(override val message: String) : UnsatisfiedRequestException(message, HttpStatusCode.InternalServerError)
 
 fun badRequest(message: String): Nothing = throw BadRequestException(message)
+fun authenticationError(message: String = "Authentication Error"): Nothing = throw AuthenticationException(message)
