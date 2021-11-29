@@ -35,7 +35,7 @@ data class AddSalaryDetailRequest(
     init {
         // Validate additional benefit total
         additionalBenefits?.total?.let { total ->
-            validate(total <= salary.annualCTC || total <= salary.inhandPerMonth) { CommonErrors.INVALID_ERRORS }
+            validate(total <= salary.annualCTC || total <= salary.inhandPerMonth) { CommonErrors.INVALID_BENEFIT_ERROR }
         }
     }
 
