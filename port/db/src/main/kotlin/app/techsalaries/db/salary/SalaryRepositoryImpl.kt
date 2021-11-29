@@ -14,12 +14,12 @@ import app.techsalaries.db.salary.query.AddJobProgrammingLanguageCommand
 import app.techsalaries.db.salary.query.AddJobTechnologyCommand
 import app.techsalaries.db.salary.query.AddSalaryQuery
 import app.techsalaries.db.sql.executeTransaction
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import java.sql.Connection
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.sql.DataSource
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 
 @Singleton
 class SalaryRepositoryImpl @Inject constructor(

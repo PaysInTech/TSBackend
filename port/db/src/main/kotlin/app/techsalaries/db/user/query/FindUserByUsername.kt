@@ -33,5 +33,4 @@ class FindUserByUsernameQuery : Query<User, String>() {
         totalCoins = result["total_coins"] as? Long ?: 0,
         roles = (result["roles"] as String).split(",").mapNotNull { UserRole.byRoleName(it) }
     )
-
 }

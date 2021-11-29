@@ -10,11 +10,11 @@ import app.techsalaries.db.jobInfo.query.GetAllContributionLevels
 import app.techsalaries.db.jobInfo.query.GetAllJobProfilesQuery
 import app.techsalaries.db.jobInfo.query.GetAllProgrammingLanguages
 import app.techsalaries.db.jobInfo.query.GetAllTechnologies
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.sql.DataSource
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 
 @Singleton
 class JobInfoRepositoryImpl @Inject constructor(

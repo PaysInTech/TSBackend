@@ -1,10 +1,7 @@
 package app.techsalaries.db.jobInfo.query
 
-import app.techsalaries.core.jobInfo.model.ProgrammingLanguage
 import app.techsalaries.core.jobInfo.model.Technology
 import app.techsalaries.db.sql.Query
-import java.sql.Array
-import java.sql.PreparedStatement
 
 class GetTechnologiesByIdsQuery(technologyIds: Set<Long>) : Query<Technology, Unit>() {
 

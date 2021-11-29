@@ -8,11 +8,13 @@ import kotlinx.serialization.json.Json
 
 val HttpClient = HttpClient(CIO) {
     install(JsonFeature) {
-        serializer = KotlinxSerializer(Json {
-            prettyPrint = true
-            ignoreUnknownKeys = true
-            encodeDefaults = true
-            explicitNulls = false
-        })
+        serializer = KotlinxSerializer(
+            Json {
+                prettyPrint = true
+                ignoreUnknownKeys = true
+                encodeDefaults = true
+                explicitNulls = false
+            }
+        )
     }
 }

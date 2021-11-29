@@ -31,12 +31,14 @@ class FirebaseAuthenticationManager @Inject constructor(
 ) : AuthenticationManager {
 
     override suspend fun createUser(username: String, email: String, password: String) = try {
-        firebaseAuth.createUser(UserRecord.CreateRequest().apply {
-            setDisplayName(username)
-            setEmail(email)
-            setPassword(password)
-            setEmailVerified(false)
-        })
+        firebaseAuth.createUser(
+            UserRecord.CreateRequest().apply {
+                setDisplayName(username)
+                setEmail(email)
+                setPassword(password)
+                setEmailVerified(false)
+            }
+        )
         signInByEmailAndPassword(email, password)
     } catch (e: FirebaseAuthException) {
         when (e.authErrorCode) {

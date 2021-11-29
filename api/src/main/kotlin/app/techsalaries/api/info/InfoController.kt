@@ -7,7 +7,6 @@ import app.techsalaries.api.info.model.TechnologiesResponse
 import app.techsalaries.api.response.HttpResponse
 import app.techsalaries.api.response.Success
 import app.techsalaries.core.jobInfo.JobInfoService
-import app.techsalaries.exception.ServerError
 import app.techsalaries.utils.handleResponse
 import javax.inject.Inject
 import javax.inject.Singleton

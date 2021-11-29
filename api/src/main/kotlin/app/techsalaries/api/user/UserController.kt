@@ -1,6 +1,5 @@
 package app.techsalaries.api.user
 
-import app.techsalaries.api.response.HttpResponse
 import app.techsalaries.api.response.Success
 import app.techsalaries.api.user.model.AuthResponse
 import app.techsalaries.api.user.model.UserLoginRequest
@@ -10,7 +9,6 @@ import app.techsalaries.core.user.UserService
 import app.techsalaries.core.user.model.AddNewUser
 import app.techsalaries.core.user.model.User
 import app.techsalaries.exception.AuthenticationException
-import app.techsalaries.exception.AuthorizationException
 import app.techsalaries.exception.CommonErrors
 import app.techsalaries.exception.badRequest
 import app.techsalaries.http.exception.InvalidCredentialsException

@@ -1,14 +1,12 @@
 package app.techsalaries.api.user
 
 import app.techsalaries.api.TechSalariesApiRoute
-import app.techsalaries.api.authentication.UserPrincipal
 import app.techsalaries.api.user.model.RefreshTokenRequest
 import app.techsalaries.plugins.AUTHENTICATION_STRICT
 import app.techsalaries.plugins.controllers
 import app.techsalaries.utils.returnResponse
 import app.techsalaries.utils.userPrincipal
 import io.ktor.application.call
-import io.ktor.auth.AuthenticationContext
 import io.ktor.auth.authenticate
 import io.ktor.auth.authentication
 import io.ktor.locations.get
@@ -37,4 +35,3 @@ fun Route.UserApi() {
         }
     }
 }
-

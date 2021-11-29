@@ -34,5 +34,4 @@ class FindUserByIdQuery : Query<User, String>() {
         totalCoins = result["total_coins"] as? Long ?: 0,
         roles = StringArrayAdapter.decode(result["roles"] as String).mapNotNull { UserRole.byRoleName(it) }
     )
-
 }

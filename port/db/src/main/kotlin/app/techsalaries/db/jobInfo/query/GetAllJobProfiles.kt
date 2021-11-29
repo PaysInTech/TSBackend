@@ -14,5 +14,4 @@ class GetAllJobProfilesQuery() : Query<JobProfile, Unit>() {
         id = result["id"] as Long,
         name = result["name"] as String
     )
-
 }

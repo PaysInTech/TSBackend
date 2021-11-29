@@ -11,11 +11,11 @@ import app.techsalaries.db.user.query.AddUserQuery
 import app.techsalaries.db.user.query.AddUserRoleCommand
 import app.techsalaries.db.user.query.FindUserByIdQuery
 import app.techsalaries.db.user.query.FindUserByUsernameQuery
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.sql.DataSource
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 
 @Singleton
 class UserRepositoryImpl @Inject constructor(
@@ -37,5 +37,4 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun findByUsername(username: String): User = withContext(dispatcher) {
         FindUserByUsernameQuery().executeAsOneOrNull(dataSource, username) ?: errorResourceNotFound("User not exists")
     }
-
 }

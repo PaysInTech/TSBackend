@@ -44,7 +44,6 @@ class FirebaseAuthApiClientImpl @Inject constructor(
         )
     }
 
-
     companion object {
         const val BASE_URL = "https://identitytoolkit.googleapis.com/v1/accounts"
     }

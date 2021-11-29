@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.firebase:firebase-auth:19.3.2")// Project modules
+    implementation("com.google.firebase:firebase-auth:19.3.2") // Project modules
     implementation(project(":core"))
     implementation(project(":port:db"))
     implementation(project(":port:http"))

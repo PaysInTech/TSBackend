@@ -47,5 +47,4 @@ class AddJobDetailsQuery() : Query<Long, AddSalaryDetail>() {
     }
 
     override fun mapResult(result: Map<String, Any?>): Long = result["id"] as Long
-
 }

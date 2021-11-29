@@ -1,7 +1,6 @@
 package app.techsalaries.db.jobInfo.query
 
 import app.techsalaries.core.jobInfo.model.ContributionLevel
-import app.techsalaries.core.jobInfo.model.JobProfile
 import app.techsalaries.db.sql.Query
 
 class GetAllContributionLevels() : Query<ContributionLevel, Unit>() {

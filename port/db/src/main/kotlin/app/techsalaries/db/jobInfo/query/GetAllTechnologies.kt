@@ -1,6 +1,5 @@
 package app.techsalaries.db.jobInfo.query
 
-import app.techsalaries.core.jobInfo.model.JobProfile
 import app.techsalaries.core.jobInfo.model.Technology
 import app.techsalaries.db.sql.Query
 
@@ -15,5 +14,4 @@ class GetAllTechnologies() : Query<Technology, Unit>() {
         id = result["id"] as Long,
         name = result["name"] as String
     )
-
 }
