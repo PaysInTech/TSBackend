@@ -16,9 +16,9 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 fun Application.main(testing: Boolean = true) {
     FirebaseInitializer()
     configureDI()
+    configureSecurity()
     configureRouting()
     configureStatusPages()
     configureSerialization()
-    configureSecurity()
     configureHTTP()
 }
