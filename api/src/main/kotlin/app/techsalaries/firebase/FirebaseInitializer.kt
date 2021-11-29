@@ -21,6 +21,6 @@ object FirebaseInitializer {
         if (isInitialized) return
 
         FirebaseApp.initializeApp(options).name
-//        isInitialized = true
+        isInitialized = true
     }
 }
