@@ -1,9 +1,16 @@
 package app.techsalaries.core.salary.model
 
-import kotlinx.serialization.Serializable
 import java.time.LocalDate
+import java.util.Currency
+import kotlinx.serialization.Serializable
 
-data class AddSalary(val detail: AddSalaryDetail, val coins: Int, val metadata: Metadata)
+data class AddSalary(
+    val detail: AddSalaryDetail,
+    val coins: Int,
+    val currency: Currency,
+    val metadata: Metadata,
+    val userId: String?
+)
 
 data class AddSalaryDetail(
     val company: String,
