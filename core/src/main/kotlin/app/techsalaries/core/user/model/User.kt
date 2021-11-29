@@ -1,8 +1,9 @@
 package app.techsalaries.core.user.model
 
 data class User(
-    val id: Long,
+    val id: String,
     val username: String,
     val email: String,
-    val roles: List<UserRole>
+    val totalCoins: Long,
+    val roles: List<UserRole> = emptyList()
 )
