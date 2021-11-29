@@ -2,8 +2,10 @@ package app.techsalaries.di.module
 
 import app.techsalaries.core.jobInfo.JobInfoRepository
 import app.techsalaries.core.salary.SalaryRepository
+import app.techsalaries.core.user.UserRepository
 import app.techsalaries.db.jobInfo.JobInfoRepositoryImpl
 import app.techsalaries.db.salary.SalaryRepositoryImpl
+import app.techsalaries.db.user.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -18,4 +20,8 @@ interface RepositoryModule {
     @Singleton
     @Binds
     fun salaryRepository(repo: SalaryRepositoryImpl): SalaryRepository
+
+    @Singleton
+    @Binds
+    fun userRepository(repo: UserRepositoryImpl): UserRepository
 }

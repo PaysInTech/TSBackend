@@ -1,9 +1,12 @@
 package app.techsalaries.di.module
 
 import app.techsalaries.config.DatabaseConfig
+import app.techsalaries.http.client.HttpClient
+import app.techsalaries.http.firebase.authentication.client.FirebaseApiKey
 import dagger.Module
 import dagger.Provides
 import io.ktor.application.Application
+import io.ktor.client.HttpClient
 import io.ktor.config.ApplicationConfig
 
 @Module
@@ -23,4 +26,12 @@ object AppModule {
             password = dbConfig.property("password").getString()
         )
     }
+
+    @Provides
+    fun firebaseApiKey(config: ApplicationConfig): FirebaseApiKey {
+        return FirebaseApiKey(config.config("firebase").property("apiKey").getString())
+    }
+
+    @Provides
+    fun httpClient(): HttpClient = HttpClient
 }

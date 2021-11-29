@@ -4,7 +4,6 @@ import app.techsalaries.config.DatabaseConfig
 import app.techsalaries.db.DefaultDataSource
 import dagger.Module
 import dagger.Provides
-import org.ktorm.database.Database
 import javax.inject.Singleton
 import javax.sql.DataSource
 
@@ -17,8 +16,4 @@ object DatabaseModule {
         databaseUser = databaseConfig.username,
         databasePassword = databaseConfig.password
     )
-
-    @Provides
-    @Singleton
-    fun database(dataSource: DataSource): Database = Database.connect(dataSource)
 }
