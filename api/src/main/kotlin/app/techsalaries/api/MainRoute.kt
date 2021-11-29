@@ -5,6 +5,7 @@ package app.techsalaries.api
 import app.techsalaries.api.health.HealthApi
 import app.techsalaries.api.info.InfoApi
 import app.techsalaries.api.salary.SalaryApi
+import app.techsalaries.api.user.UserApi
 import io.ktor.locations.Location
 import io.ktor.routing.Routing
 
@@ -30,10 +31,26 @@ object TechSalariesApiRoute {
 
     @Location("salaries")
     object Salaries
+
+    @Location("/users")
+    object Users {
+        @Location("register")
+        object Register
+
+        @Location("login")
+        object Login
+
+        @Location("me")
+        object Me
+
+        @Location("/token/refresh")
+        object RefreshToken
+    }
 }
 
 fun Routing.MainRoute() {
     HealthApi()
     InfoApi()
     SalaryApi()
+    UserApi()
 }
