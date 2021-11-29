@@ -9,6 +9,7 @@ import app.techsalaries.db.utils.sql.executeQuery
 import app.techsalaries.firebase.FirebaseInitializer
 import io.ktor.http.HttpStatusCode
 import javax.inject.Inject
+import javax.inject.Provider
 import javax.inject.Singleton
 import javax.sql.DataSource
 
@@ -17,7 +18,10 @@ import javax.sql.DataSource
  * It considers self (application) and all its dependent ports (like databases, etc.) for health checking.
  */
 @Singleton
-class HealthController @Inject constructor(private val dataSource: DataSource) {
+class HealthController @Inject constructor(
+    private val dataSource: DataSource,
+    private val firebaseInitializer: Provider<FirebaseInitializer>
+) {
     fun checkHealth(): HttpResponse<out BaseResponse> {
         return when {
             !isDatabaseWorking() -> Unsuccessful("Database is not operational", HttpStatusCode.ServiceUnavailable)
@@ -35,5 +39,6 @@ class HealthController @Inject constructor(private val dataSource: DataSource) {
         }
     }.getOrDefault(false)
 
-    private fun isFirebaseWorking(): Boolean = runCatching { FirebaseInitializer.isInitialized }.getOrDefault(false)
+    private fun isFirebaseWorking(): Boolean =
+        runCatching { firebaseInitializer.get().firebaseApp != null }.getOrDefault(false)
 }

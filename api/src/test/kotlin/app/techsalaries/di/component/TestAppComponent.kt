@@ -5,6 +5,7 @@ import app.techsalaries.di.module.CoroutinesDispatchersModule
 import app.techsalaries.di.module.RepositoryModule
 import app.techsalaries.di.module.TestAuthModule
 import app.techsalaries.di.module.TestDatabaseModule
+import app.techsalaries.di.module.TestFirebaseModule
 import dagger.BindsInstance
 import dagger.Component
 import io.ktor.application.Application
@@ -18,7 +19,8 @@ import javax.sql.DataSource
         TestDatabaseModule::class,
         RepositoryModule::class,
         CoroutinesDispatchersModule::class,
-        TestAuthModule::class
+        TestAuthModule::class,
+        TestFirebaseModule::class
     ]
 )
 interface TestAppComponent : AppComponent {

@@ -9,9 +9,16 @@ class FakeAuthenticator @Inject constructor() : Authenticator {
     private var user: User? = null
 
     override suspend fun authenticate(token: String): User =
-        user ?: authenticationError(CommonErrors.INVALID_AUTHENTICATION_TOKEN)
+        if (token == VALID_TOKEN && user != null) {
+            user!!
+        } else {
+            authenticationError(CommonErrors.INVALID_AUTHENTICATION_TOKEN)
+        }
 
     fun provideFakeUser(user: User?) {
         this.user = user
     }
 }
+
+val VALID_TOKEN = "Bearer valid-token"
+val INVALID_TOKEN = "Bearer invalid-token"
