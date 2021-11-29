@@ -2,26 +2,22 @@ package app.techsalaries.di.module
 
 import dagger.Module
 import dagger.Provides
-import liquibase.Liquibase
-import liquibase.database.jvm.JdbcConnection
-import liquibase.resource.FileSystemResourceAccessor
-import org.junit.ClassRule
-import org.ktorm.database.Database
-import org.postgresql.ds.PGSimpleDataSource
-import org.testcontainers.containers.PostgreSQLContainer
 import java.nio.file.Paths
 import java.sql.DriverManager
 import javax.inject.Singleton
 import javax.sql.DataSource
+import liquibase.Liquibase
+import liquibase.database.jvm.JdbcConnection
+import liquibase.resource.FileSystemResourceAccessor
+import org.junit.ClassRule
+import org.postgresql.ds.PGSimpleDataSource
+import org.testcontainers.containers.PostgreSQLContainer
 
 @Module
 object TestDatabaseModule {
     @Provides
-    fun dataSource(): DataSource = TestDataSource()
-
-    @Provides
     @Singleton
-    fun database(dataSource: DataSource): Database = Database.connect(dataSource)
+    fun dataSource(): DataSource = TestDataSource()
 }
 
 class TechSalariesPSQLContainer : PostgreSQLContainer<TechSalariesPSQLContainer>("postgres")

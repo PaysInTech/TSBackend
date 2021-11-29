@@ -1,8 +1,12 @@
 package app.techsalaries.di.component
 
 import app.techsalaries.di.module.AppModule
+import app.techsalaries.di.module.AuthModule
 import app.techsalaries.di.module.CoroutinesDispatchersModule
+import app.techsalaries.di.module.FirebaseModule
+import app.techsalaries.di.module.HttpClientModule
 import app.techsalaries.di.module.RepositoryModule
+import app.techsalaries.di.module.TestAuthModule
 import app.techsalaries.di.module.TestDatabaseModule
 import dagger.BindsInstance
 import dagger.Component
@@ -16,7 +20,8 @@ import javax.sql.DataSource
         AppModule::class,
         TestDatabaseModule::class,
         RepositoryModule::class,
-        CoroutinesDispatchersModule::class
+        CoroutinesDispatchersModule::class,
+        TestAuthModule::class
     ]
 )
 interface TestAppComponent : AppComponent {
