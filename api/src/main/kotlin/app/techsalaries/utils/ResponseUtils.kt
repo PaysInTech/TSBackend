@@ -8,6 +8,7 @@ import app.techsalaries.core.exception.ResourceNotFoundException
 import app.techsalaries.exception.BadRequestException
 import app.techsalaries.exception.NotFoundException
 import app.techsalaries.exception.ServerError
+import app.techsalaries.exception.UnsatisfiedRequestException
 import io.ktor.application.ApplicationCall
 import io.ktor.application.call
 import io.ktor.response.respond
@@ -28,7 +29,9 @@ suspend fun <T : BaseResponse> handleResponse(response: suspend () -> HttpRespon
     return try {
         response()
     } catch (e: Exception) {
+        e.printStackTrace()
         throw when (e) {
+            is UnsatisfiedRequestException -> e
             is IllegalStateException -> BadRequestException(e.message.toString())
             is ResourceNotFoundException -> NotFoundException(e.message.toString())
             else -> ServerError("Something went wrong. Failed to serve the request")
