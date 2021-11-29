@@ -39,8 +39,7 @@ class FirebaseAuthApiClientImpl @Inject constructor(
             formParameters = Parameters.build {
                 append("grant_type", request.grantType)
                 append("refresh_token", request.refreshToken)
-            },
-//            encodeInQuery = true
+            }
         )
     }
 
