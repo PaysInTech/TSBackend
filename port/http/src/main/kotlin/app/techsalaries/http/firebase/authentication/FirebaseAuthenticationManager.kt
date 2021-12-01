@@ -15,12 +15,40 @@ import com.google.firebase.auth.UserRecord
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Authentication manager is useful for authenticating system users.
+ */
 @Singleton
 interface AuthenticationManager {
+    /**
+     * Creates a user and returns user along with token
+     *
+     * @throws UserAlreadyExistException if user already exists
+     */
     suspend fun createUser(username: String, email: String, password: String): AuthTokenAndUser
+
+    /**
+     * Deletes user from authentication system
+     */
     suspend fun deleteUser(uid: String)
+
+    /**
+     * Verifies [token] and returns authenticated user details.
+     *
+     * @throws IllegalArgumentException if token is invalid
+     */
     suspend fun verifyToken(token: String): AuthenticatedUser
+
+    /**
+     * Refreshes tokens for user and returns new tokens
+     */
     suspend fun refreshTokens(refreshToken: String): AuthTokenAndUser
+
+    /**
+     * Signs in user using [email] and [password] and returns authenticated user and new token details.
+     *
+     * @throws InvalidCredentialsException if username or password is invalid
+     */
     suspend fun signInByEmailAndPassword(email: String, password: String): AuthTokenAndUser
 }
 

@@ -8,9 +8,15 @@ import app.techsalaries.http.firebase.authentication.AuthenticationManager
 import javax.inject.Inject
 
 interface Authenticator {
+    /**
+     * Authenticates [token] and returns [User]
+     */
     suspend fun authenticate(token: String): User
 }
 
+/**
+ * [Authenticator] implementation using Firebase authentication authenticator
+ */
 class FirebaseAuthenticator @Inject constructor(
     private val authenticationManager: AuthenticationManager,
     private val userService: UserService

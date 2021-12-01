@@ -45,7 +45,12 @@ fun Authentication.Configuration.firebase(
 
 fun Application.configureSecurity(authenticator: Authenticator = appComponent.authenticator()) {
     install(Authentication) {
+        // This authenticator will throw exception if token is absent. Useful for strict APIs where authentication
+        // is compulsory
         firebase(AUTHENTICATION_STRICT, throwOnAbsentToken = true) { this.authenticator = authenticator }
+
+        // This authenticator will NOT throw exception if token is absent. Useful for non-strict APIs where
+        // authentication is not mandatory or compulsory
         firebase(AUTHENTICATION_NO_STRICT, throwOnAbsentToken = false) { this.authenticator = authenticator }
     }
 }
