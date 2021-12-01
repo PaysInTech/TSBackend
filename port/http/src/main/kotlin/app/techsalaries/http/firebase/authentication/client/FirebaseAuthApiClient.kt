@@ -14,17 +14,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-interface FirebaseAuthApiClient {
-    suspend fun signInByEmailAndPassword(request: SignInByEmailAndPasswordRequest): SignInByEmailAndPasswordResponse
-    suspend fun refreshToken(request: RefreshTokenRequest): RefreshTokenResponse
-}
-
-@Singleton
-class FirebaseAuthApiClientImpl @Inject constructor(
+class FirebaseAuthApiClient @Inject constructor(
     private val firebaseApiKey: FirebaseApiKey,
     private val httpClient: HttpClient
-) : FirebaseAuthApiClient {
-    override suspend fun signInByEmailAndPassword(
+) {
+    suspend fun signInByEmailAndPassword(
         request: SignInByEmailAndPasswordRequest
     ): SignInByEmailAndPasswordResponse {
         return httpClient.post("$BASE_URL/:signInWithPassword?key=${firebaseApiKey.value}") {
@@ -33,7 +27,7 @@ class FirebaseAuthApiClientImpl @Inject constructor(
         }
     }
 
-    override suspend fun refreshToken(request: RefreshTokenRequest): RefreshTokenResponse {
+    suspend fun refreshToken(request: RefreshTokenRequest): RefreshTokenResponse {
         return httpClient.submitForm(
             url = "https://securetoken.googleapis.com/v1/token?key=${firebaseApiKey.value}",
             formParameters = Parameters.build {

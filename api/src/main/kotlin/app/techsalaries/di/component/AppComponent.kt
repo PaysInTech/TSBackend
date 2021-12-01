@@ -6,7 +6,6 @@ import app.techsalaries.di.module.AuthModule
 import app.techsalaries.di.module.CoroutinesDispatchersModule
 import app.techsalaries.di.module.DatabaseModule
 import app.techsalaries.di.module.FirebaseModule
-import app.techsalaries.di.module.HttpClientModule
 import app.techsalaries.di.module.RepositoryModule
 import dagger.BindsInstance
 import dagger.Component
@@ -21,8 +20,7 @@ import javax.inject.Singleton
         RepositoryModule::class,
         CoroutinesDispatchersModule::class,
         FirebaseModule::class,
-        AuthModule::class,
-        HttpClientModule::class
+        AuthModule::class
     ]
 )
 interface AppComponent {
