@@ -13,7 +13,6 @@ REST API service for a Tech Salaries.
 - PostgreSQL: For data storage
 - Dagger: Dependency Injection Framework
 - Liquibase: Migrations and DB change version control
-- Ktorm: ORM for database
 - Kotest: Kotlin Testing library
 - Mockk: Mocking library
 - Spotless: Lint checker and formatter
@@ -25,6 +24,7 @@ This project follows Hexagonal Architecture. It is a multi-module gradle project
 - `api`: Exposes public APIs. _Entrypoint of the application_.
 - `core`: Core Business Logic
 - `port:db` Single source of truth (data)
+- `port:http` Source of data from HTTP layer
 - `migration`: Handles database migrations and control
 
 ## Development Setup 🖥
@@ -64,6 +64,7 @@ export DATABASE_HOST=localhost
 export DATABASE_PORT=5432
 export DATABASE_USER=postgres
 export DATABASE_PASSWORD=postgres
+export FIREBASE_API_KEY=API_KEY
 ```
 
 - Finally, run the Gradle command:
