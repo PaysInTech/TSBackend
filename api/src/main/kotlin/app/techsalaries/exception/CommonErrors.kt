@@ -7,7 +7,7 @@ object CommonErrors {
     const val INVALID_WORK_TYPE_ERROR = "Work type should be one of (FULL_REMOTE, HYBRID, OFFICE)"
     const val INVALID_JOB_LEVEL = "Level should be from L1 to L10"
     const val INVALID_EMAIL = "Email is invalid"
-    const val INVALID_USERNAME = "Username should at least have 4 characters"
+    const val INVALID_USERNAME = "Username should at least have 4 characters and should not contain special characters"
     const val INVALID_PASSWORD = "Password should at least have 8 characters"
     const val EMAIL_ALREADY_EXISTS = "User already exists with this email"
     const val USERNAME_ALREADY_EXISTS = "User already exists with this username"
