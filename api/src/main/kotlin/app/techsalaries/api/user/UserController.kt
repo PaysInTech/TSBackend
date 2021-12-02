@@ -63,6 +63,10 @@ class UserController @Inject constructor(
     private fun AuthTokenAndUser.toAuthResponse() = AuthResponse(token, refreshToken, expiresIn)
 
     suspend fun refreshTokenForToken(refreshToken: String) = handleResponse {
-        Success(authenticationManager.refreshTokens(refreshToken).toAuthResponse())
+        try {
+            Success(authenticationManager.refreshTokens(refreshToken).toAuthResponse())
+        } catch (e: Exception) {
+            throw AuthenticationException(e.message ?: "Invalid refresh token")
+        }
     }
 }
