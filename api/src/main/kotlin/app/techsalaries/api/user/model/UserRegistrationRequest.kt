@@ -13,7 +13,7 @@ data class UserRegistrationRequest(
 ) {
     init {
         validate(isValidEmail(email)) { CommonErrors.INVALID_EMAIL }
-        validate(username.trim().length >= 4) { CommonErrors.INVALID_USERNAME }
+        validate(username.trim().length >= 4 && username.all { it.isLetterOrDigit() }) { CommonErrors.INVALID_USERNAME }
         validate(password.trim().length >= 8) { CommonErrors.INVALID_PASSWORD }
     }
 }
