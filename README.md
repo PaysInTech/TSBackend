@@ -47,10 +47,19 @@ CREATE DATABASE paysintech_dev;
 
 ### ⚙️ Project Setup
 
-- You will require latest stable version of JetBrains IntelliJ Idea IDE to build and run the server application. You can install the latest version from [here](https://www.jetbrains.com/idea/).
+- You will require the latest stable version of JetBrains IntelliJ Idea IDE to build and run the server application. You can install the latest version from [here](https://www.jetbrains.com/idea/).
 - Import project in IntelliJ IDE.
 - Use existing Gradle wrapper for syncing project.
 - Build 🔨 the project.
+
+### 🔥 Setup Firebase
+
+Firebase setup is necessary for authentication in the application.
+Without this step, application won't run.
+
+- Go to [Firebase Console](https://console.firebase.google.com/) and create new project.
+- Navigate to _Project Settings_ -> _Service Accounts_ -> _Select 'Firebase Admin SDK'_ -> _Click 'Generate Private Key'_ -> _Save generated private key_ -> Rename it to _`firebase-adminsdk-config.json`_
+- Copy config file to `api/src/main/resources` directory.
 
 ### ✈️ Running the Application
 
