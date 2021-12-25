@@ -1,4 +1,4 @@
-rootProject.name = "techsalaries-api"
+rootProject.name = "paysintech-api"
 
 include("core")
 

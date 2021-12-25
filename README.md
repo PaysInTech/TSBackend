@@ -1,4 +1,4 @@
-# TechSalaries API Service
+# PaysInTech API Service
 
 ![CI](https://github.com/Tech-Salaries-India/TSBackend/workflows/CI/badge.svg?branch=main)
 
@@ -39,10 +39,10 @@ Docker setup includes API, DB and DB migrations. The url to access the API - htt
 
 - Download and install the latest [PostgreSQL package](https://www.postgresql.org/download/) as per your system need.
 - After successful installation, create database for this project.  
-  _For e.g. create a database named `techsalaries_dev`._
+  _For e.g. create a database named `paysintech_dev`._
 
 ```sql
-CREATE DATABASE techsalaries_dev;
+CREATE DATABASE paysintech_dev;
 ```
 
 ### ⚙️ Project Setup
@@ -59,7 +59,7 @@ CREATE DATABASE techsalaries_dev;
 ```bash
 export SECRET_KEY=ANY_RANDOM_SECRET
 
-export DATABASE_NAME=techsalaries_dev
+export DATABASE_NAME=paysintech_dev
 export DATABASE_HOST=localhost
 export DATABASE_PORT=5432
 export DATABASE_USER=postgres
