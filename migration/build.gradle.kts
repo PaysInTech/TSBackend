@@ -16,7 +16,7 @@ dependencies {
 }
 
 application {
-    applicationName = "techsalaries-migration"
+    applicationName = "paysintech-migration"
     mainClass.set("liquibase.integration.commandline.Main")
 }
 
@@ -32,7 +32,7 @@ tasks.named<JavaExec>("run") {
 
     val databaseHost = System.getenv("DATABASE_HOST") ?: "localhost"
     val databasePort = System.getenv("DATABASE_PORT") ?: "5432"
-    val databaseName = System.getenv("DATABASE_NAME") ?: "techsalaries_dev"
+    val databaseName = System.getenv("DATABASE_NAME") ?: "paysintech_dev"
     val databaseUsername = System.getenv("DATABASE_USER") ?: "postgres"
     val databasePassword = System.getenv("DATABASE_PASSWORD") ?: "postgres"
 

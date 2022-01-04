@@ -5,10 +5,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DATABASE_NAME: techsalaries
+      DATABASE_NAME: paysintech
       DATABASE_HOST: db
       DATABASE_PORT: 5432
-      DATABASE_USER: techsalaries
+      DATABASE_USER: paysintech
       DATABASE_PASSWORD: password123
     depends_on:
       - db_migration
@@ -17,17 +17,17 @@ services:
   db:
     image: postgres:13.4
     environment:
-      POSTGRES_USER: techsalaries
+      POSTGRES_USER: paysintech
       POSTGRES_PASSWORD: password123
 
   db_migration:
     build: migration/
     command: liquibase update --changelog-file=changelog/changelog.xml --defaultsFile=changelog/liquibase.docker.properties
     environment:
-      DATABASE_NAME: techsalaries
+      DATABASE_NAME: paysintech
       DATABASE_HOST: db
       DATABASE_PORT: 5432
-      DATABASE_USER: techsalaries
+      DATABASE_USER: paysintech
       DATABASE_PASSWORD: password123
     links:
       - db

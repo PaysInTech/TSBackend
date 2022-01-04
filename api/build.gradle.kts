@@ -31,6 +31,7 @@ dependencies {
     // Project modules
     implementation(project(":core"))
     implementation(project(":port:db"))
+    implementation(project(":port:http"))
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
