@@ -4,6 +4,7 @@ package app.techsalaries.api
 
 import app.techsalaries.api.health.HealthApi
 import app.techsalaries.api.sample.SampleApi
+import io.ktor.auth.*
 import io.ktor.locations.Location
 import io.ktor.routing.Routing
 
@@ -18,5 +19,7 @@ class TechSalariesApiRoute {
 
 fun Routing.MainRoute() {
     HealthApi()
-    SampleApi()
+    authenticate {
+        SampleApi()
+    }
 }

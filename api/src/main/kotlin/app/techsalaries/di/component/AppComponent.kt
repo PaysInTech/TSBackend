@@ -3,13 +3,14 @@ package app.techsalaries.di.component
 import app.techsalaries.di.module.AppModule
 import app.techsalaries.di.module.DatabaseModule
 import app.techsalaries.di.module.RepositoryModule
+import app.techsalaries.di.module.ServiceModule
 import dagger.BindsInstance
 import dagger.Component
 import io.ktor.application.Application
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, DatabaseModule::class, RepositoryModule::class])
+@Component(modules = [AppModule::class, DatabaseModule::class, RepositoryModule::class, ServiceModule::class])
 interface AppComponent {
     fun app(): Application
 

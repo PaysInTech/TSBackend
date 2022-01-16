@@ -1,6 +1,7 @@
 package app.techsalaries.di.module
 
 import app.techsalaries.config.DatabaseConfig
+import app.techsalaries.config.TokenConfig
 import dagger.Module
 import dagger.Provides
 import io.ktor.application.Application
@@ -21,6 +22,19 @@ object AppModule {
             name = dbConfig.property("database").getString(),
             username = dbConfig.property("user").getString(),
             password = dbConfig.property("password").getString()
+        )
+    }
+
+    @Provides
+    fun tokenConfig(config: ApplicationConfig): TokenConfig {
+
+        val jwtConfig = config.config("jwt")
+
+        return TokenConfig(
+            audience = jwtConfig.property("audience").getString(),
+            realm = jwtConfig.property("realm").getString(),
+            issuer = jwtConfig.property("issuer").getString(),
+            secret = jwtConfig.property("secret").getString()
         )
     }
 }

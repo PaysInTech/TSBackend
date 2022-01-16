@@ -1,5 +1,6 @@
 package app.techsalaries
 
+import app.techsalaries.api.auth.AuthRepositoryImpl
 import app.techsalaries.plugins.configureDI
 import app.techsalaries.plugins.configureHTTP
 import app.techsalaries.plugins.configureRouting
@@ -17,6 +18,6 @@ fun Application.main(testing: Boolean = true) {
     configureRouting()
     configureStatusPages()
     configureSerialization()
-    configureSecurity()
+    configureSecurity(AuthRepositoryImpl())
     configureHTTP()
 }

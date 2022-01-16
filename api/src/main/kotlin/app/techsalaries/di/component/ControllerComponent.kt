@@ -1,5 +1,6 @@
 package app.techsalaries.di.component
 
+import app.techsalaries.api.auth.AuthController
 import app.techsalaries.api.sample.SampleController
 import dagger.Lazy
 import dagger.Subcomponent
@@ -10,4 +11,7 @@ interface ControllerComponent {
 
     @Singleton
     fun sampleController(): Lazy<SampleController>
+
+    @Singleton
+    fun authController(): Lazy<AuthController>
 }
