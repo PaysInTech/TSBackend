@@ -7,9 +7,9 @@ val mockk_version: String by project
 val coroutines_version: String by project
 
 plugins {
-    kotlin("jvm") version "1.5.31"
-    kotlin("plugin.serialization") version "1.5.31"
-    kotlin("kapt") version "1.5.31"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
+    kotlin("kapt") version "1.6.10"
     id("com.diffplug.spotless") version "5.15.1"
     jacoco
 }

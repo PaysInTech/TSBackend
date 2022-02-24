@@ -1,0 +1,1 @@
+web: echo ${GOOGLE_CREDENTIALS} > google-credentials.json; api/build/install/api/bin/api
