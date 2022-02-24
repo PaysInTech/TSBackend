@@ -1,0 +1,8 @@
+{
+  "name": "PaysInTech API",
+  "description": "The REST API Service for PaysInTech",
+  "image": "heroku/java",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}

@@ -60,6 +60,14 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:$testcontainers_version")
 }
 
+tasks.register<JavaExec>("stage") {
+    dependsOn("installDist")
+}
+
 tasks.named<JavaExec>("run") {
+    dependsOn(":migration:run")
+}
+
+tasks.named<JavaExec>("stage") {
     dependsOn(":migration:run")
 }
