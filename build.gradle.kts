@@ -1,13 +1,17 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 val kotlin_version: String by project
 val kotest_version: String by project
 val mockk_version: String by project
 val coroutines_version: String by project
 
 plugins {
-    kotlin("jvm") version "1.6.0"
-    kotlin("plugin.serialization") version "1.6.0"
-    kotlin("kapt") version "1.6.0"
+kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
+    kotlin("kapt") version "1.6.10"
     id("com.diffplug.spotless") version "5.15.1"
+    jacoco
 }
 
 repositories { mavenCentral() }
@@ -15,8 +19,13 @@ repositories { mavenCentral() }
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "com.diffplug.spotless")
+    apply(plugin = "jacoco")
 
     repositories { mavenCentral() }
+
+    jacoco {
+        toolVersion = "0.8.7"
+    }
 
     dependencies {
         // Standard Library
@@ -48,6 +57,12 @@ subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform()
+        testLogging {
+            events = setOf(TestLogEvent.FAILED, TestLogEvent.SKIPPED)
+            exceptionFormat = TestExceptionFormat.FULL
+            showExceptions = true
+            showCauses = true
+        }
     }
 
     java {
@@ -64,6 +79,19 @@ subprojects {
     tasks.compileTestKotlin {
         kotlinOptions {
             jvmTarget = "14"
+        }
+    }
+
+    tasks.test {
+        finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+    }
+    tasks.jacocoTestReport {
+        dependsOn(tasks.test) // tests are required to run before generating the report
+
+        reports {
+            xml.required.set(false)
+            csv.required.set(false)
+            html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
         }
     }
 }
