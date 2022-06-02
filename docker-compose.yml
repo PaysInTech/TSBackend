@@ -24,7 +24,7 @@ services:
     build: migration/
     command: liquibase update --changelog-file=changelog/changelog.xml --defaultsFile=changelog/liquibase.docker.properties
     environment:
-      DATABASE_NAME: paysintech
+DATABASE_NAME: paysintech
       DATABASE_HOST: db
       DATABASE_PORT: 5432
       DATABASE_USER: paysintech
