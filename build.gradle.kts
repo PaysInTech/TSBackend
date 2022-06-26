@@ -50,9 +50,10 @@ subprojects {
         useJUnitPlatform()
     }
 
-    java {
-        sourceCompatibility = JavaVersion.VERSION_14
-        targetCompatibility = JavaVersion.VERSION_14
+    kotlin {
+        jvmToolchain {
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(14))
+        }
     }
 
     tasks.compileKotlin {
