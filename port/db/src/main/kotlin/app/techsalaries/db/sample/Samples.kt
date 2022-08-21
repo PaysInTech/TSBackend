@@ -1,10 +1,8 @@
 package app.techsalaries.db.sample
 
-import org.ktorm.schema.Table
-import org.ktorm.schema.long
-import org.ktorm.schema.varchar
+import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.sql.Column
 
-object Samples : Table<Nothing>("samples") {
-    val id = long("id").primaryKey()
-    val someText = varchar("some_text")
+object Samples : IntIdTable("samples") {
+    val someText: Column<String> = varchar("some_text", 255)
 }

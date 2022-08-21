@@ -2,19 +2,21 @@ package app.techsalaries.db.sample
 
 import app.techsalaries.core.sample.SampleRepository
 import app.techsalaries.core.sample.model.Sample
-import org.ktorm.database.Database
-import org.ktorm.dsl.from
-import org.ktorm.dsl.map
-import org.ktorm.dsl.select
+import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.selectAll
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SampleRepositoryImpl @Inject constructor(private val database: Database) : SampleRepository {
+class SampleRepositoryImpl @Inject constructor() : SampleRepository {
     override fun getAllSampleTexts(): List<Sample> {
-        return database
-            .from(Samples)
-            .select()
-            .map { Sample(it[Samples.id]!!, it[Samples.someText]) }
+        return Samples.selectAll().mapNotNull { toSample(it) }
+    }
+
+    private fun toSample(row: ResultRow): Sample {
+        return Sample(
+            id = row[Samples.id].value.toLong(),
+            someText = row[Samples.someText]
+        )
     }
 }
