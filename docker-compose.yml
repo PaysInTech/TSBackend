@@ -10,8 +10,8 @@ services:
       DATABASE_PORT: 5432
       DATABASE_USER: techsalaries
       DATABASE_PASSWORD: password123
-    depends_on:
-      - db_migration
+#    depends_on:
+#      - db_migration
     links:
       - db
   db:
@@ -20,14 +20,14 @@ services:
       POSTGRES_USER: techsalaries
       POSTGRES_PASSWORD: password123
 
-  db_migration:
-    build: migration/
-    command: liquibase update --changelog-file=changelog/changelog.xml --defaultsFile=changelog/liquibase.docker.properties
-    environment:
-      DATABASE_NAME: techsalaries
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
-      DATABASE_USER: techsalaries
-      DATABASE_PASSWORD: password123
-    links:
-      - db
+#  db_migration:
+#    build: migration/
+#    command: liquibase update --changelog-file=changelog/changelog.xml --defaultsFile=changelog/liquibase.docker.properties
+#    environment:
+#      DATABASE_NAME: techsalaries
+#      DATABASE_HOST: db
+#      DATABASE_PORT: 5432
+#      DATABASE_USER: techsalaries
+#      DATABASE_PASSWORD: password123
+#    links:
+#      - db

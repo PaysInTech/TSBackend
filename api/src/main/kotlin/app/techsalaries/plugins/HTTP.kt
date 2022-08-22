@@ -1,15 +1,15 @@
 package app.techsalaries.plugins
 
-import io.ktor.application.Application
-import io.ktor.application.install
-import io.ktor.features.CachingHeaders
 import io.ktor.http.CacheControl
 import io.ktor.http.ContentType
 import io.ktor.http.content.CachingOptions
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
+import io.ktor.server.plugins.cachingheaders.CachingHeaders
 
 fun Application.configureHTTP() {
     install(CachingHeaders) {
-        options { outgoingContent ->
+        options { _, outgoingContent ->
             when (outgoingContent.contentType?.withoutParameters()) {
                 ContentType.Text.CSS -> CachingOptions(CacheControl.MaxAge(maxAgeSeconds = 24 * 60 * 60))
                 else -> null

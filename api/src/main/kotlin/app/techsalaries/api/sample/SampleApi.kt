@@ -2,17 +2,25 @@
 
 package app.techsalaries.api.sample
 
-import app.techsalaries.api.TechSalariesApiRoute
+import app.techsalaries.api.API_PREFIX
 import app.techsalaries.plugins.controllers
 import dagger.Lazy
-import io.ktor.application.call
-import io.ktor.locations.get
-import io.ktor.response.respond
-import io.ktor.routing.Route
+import io.ktor.resources.Resource
+import io.ktor.server.application.call
+import io.ktor.server.resources.get
+import io.ktor.server.response.respond
+import io.ktor.server.routing.Route
+import kotlinx.serialization.Serializable
 
-fun Route.SampleApi(controller: Lazy<SampleController> = controllers.sampleController()) {
+const val SAMPLE_API = "$API_PREFIX/$API_PREFIX/sample"
 
-    get<TechSalariesApiRoute.Samples> {
+@Serializable
+@Resource(SAMPLE_API)
+class SampleApi
+
+fun Route.sampleApi(controller: Lazy<SampleController> = controllers.sampleController()) {
+
+    get<SampleApi> {
         call.respond(controller.get().getAllSamples())
     }
 }

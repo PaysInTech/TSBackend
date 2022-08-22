@@ -1,10 +1,12 @@
 package app.techsalaries.di.module
 
+import app.techsalaries.JwtService
 import app.techsalaries.config.DatabaseConfig
 import dagger.Module
 import dagger.Provides
-import io.ktor.application.Application
-import io.ktor.config.ApplicationConfig
+import io.ktor.server.application.Application
+import io.ktor.server.config.ApplicationConfig
+import javax.inject.Singleton
 
 @Module
 object AppModule {
@@ -23,4 +25,8 @@ object AppModule {
             password = dbConfig.property("password").getString()
         )
     }
+
+    @Provides
+    @Singleton
+    fun jwtService(): JwtService = JwtService()
 }

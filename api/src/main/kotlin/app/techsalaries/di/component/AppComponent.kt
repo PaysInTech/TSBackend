@@ -1,19 +1,24 @@
 package app.techsalaries.di.component
 
+import app.techsalaries.JwtService
+import app.techsalaries.config.DatabaseConfig
 import app.techsalaries.di.module.AppModule
-import app.techsalaries.di.module.DatabaseModule
 import app.techsalaries.di.module.RepositoryModule
 import dagger.BindsInstance
 import dagger.Component
-import io.ktor.application.Application
+import io.ktor.server.application.Application
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, DatabaseModule::class, RepositoryModule::class])
+@Component(modules = [AppModule::class, RepositoryModule::class])
 interface AppComponent {
     fun app(): Application
 
     fun controllerComponent(): ControllerComponent
+
+    fun jwtService(): JwtService
+
+    fun databaseConfig(): DatabaseConfig
 
     @Component.Builder
     interface Builder {

@@ -3,9 +3,9 @@ package app.techsalaries.plugins
 import app.techsalaries.di.component.AppComponent
 import app.techsalaries.di.component.ControllerComponent
 import app.techsalaries.di.component.DaggerAppComponent
-import io.ktor.application.Application
-import io.ktor.routing.Route
-import io.ktor.routing.application
+import io.ktor.server.application.Application
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.application
 import io.ktor.util.AttributeKey
 
 fun Application.configureDI() {
