@@ -1,0 +1,109 @@
+# Anonymous Salary Submission
+
+POST http://localhost:8080/api/v1/salaries
+Content-Type: application/json
+Currency: USD
+
+{
+  "company": "John Doe Tech Ltd.",
+  "designation": "Software Engineer",
+  "profileId": 1,
+  "contributionLevel": 1,
+  "additionalBenefits": {
+    "benefits": [
+      {
+        "type": "Mobile reimbursement",
+        "amount": 1000.0
+      },
+      {
+        "type": "Internet Reimbursement",
+        "amount": 2000.0
+      },
+      {
+        "type": "Food",
+        "amount": 3000.0
+      }
+    ]
+  },
+  "salary": {
+    "annualCTC": 2050040.0,
+    "inhandPerMonth": 100050.0,
+    "bonus": 5100.0
+  },
+  "level": "L1",
+  "team": "Team",
+  "joiningDate": "2021-11-11",
+  "lastWorkingDate": "",
+  "isPromoted": false,
+  "workType": "FULL_REMOTE",
+  "baseLocation": {
+    "state": "MH",
+    "city": "Pune"
+  },
+  "availableInIndia": true,
+  "technologies": [
+    1,
+    2,
+    3
+  ],
+  "programmingLanguagesUsed": [
+    1,
+    2,
+    3
+  ]
+}
+
+### Salary submission with authentication
+
+POST http://localhost:8080/api/v1/salaries
+Content-Type: application/json
+Authorization: Bearer <TOKEN>
+
+{
+  "company": "John Doe Tech Ltd.",
+  "designation": "Software Engineer",
+  "profileId": 1,
+  "contributionLevel": 1,
+  "additionalBenefits": {
+    "benefits": [
+      {
+        "type": "Mobile reimbursement",
+        "amount": 1000.0
+      },
+      {
+        "type": "Internet Reimbursement",
+        "amount": 2000.0
+      },
+      {
+        "type": "Food",
+        "amount": 3000.0
+      }
+    ]
+  },
+  "salary": {
+    "annualCTC": 2050040.0,
+    "inhandPerMonth": 100050.0,
+    "bonus": 5100.0
+  },
+  "level": "L1",
+  "team": "Team",
+  "joiningDate": "2021-11-11",
+  "lastWorkingDate": "",
+  "isPromoted": false,
+  "workType": "FULL_REMOTE",
+  "baseLocation": {
+    "state": "MH",
+    "city": "Pune"
+  },
+  "availableInIndia": true,
+  "technologies": [
+    1,
+    2,
+    3
+  ],
+  "programmingLanguagesUsed": [
+    1,
+    2,
+    3
+  ]
+}
